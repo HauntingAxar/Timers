@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Timers Practice</title>
+</head>
+<body>
+<div class="container">
+  <div id="content" class="content">
+    <button id="remove">Remove This Button</button>
+    <button id="colors">Colors!</button>
+  </div>
+</div>
+
+<script>
+  const removeButton = document.getElementById("remove");
+  const colorButton = document.getElementById("colors")
+  const content = document.getElementById("content");
+  const contentC = document.querySelector(".content")
+
+  const myList = ["red", "orange", "yellow", "green", "blue"];
+
+  colorButton.addEventListener('click', function(){
+      contentC.style.backgroundColor = randomizeFunction();
+  });
+  function randomizeFunction() {
+      return myList[Math.floor(Math.random() * myList.length)];
+  }
+
+  removeButton.addEventListener('click', function(){
+    setTimeout(function(){
+      let removeButton = document.getElementById("remove")
+      content.removeChild(removeButton);
+    }, 3000);
+  });
+</script>
+</body>
+</html>
