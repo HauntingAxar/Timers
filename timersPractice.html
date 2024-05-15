@@ -9,20 +9,31 @@
   <div id="content" class="content">
     <button id="remove">Remove This Button</button>
     <button id="colors">Colors!</button>
+    <button id="stop">Keep Color!</button>
   </div>
 </div>
 
 <script>
   const removeButton = document.getElementById("remove");
   const colorButton = document.getElementById("colors")
+  const stopButton = document.getElementById("stop")
   const content = document.getElementById("content");
-  const contentC = document.querySelector(".content")
 
   const myList = ["red", "orange", "yellow", "green", "blue"];
 
   colorButton.addEventListener('click', function(){
-      contentC.style.backgroundColor = randomizeFunction();
+       interval = setInterval(function(){
+          colorButton.style.backgroundColor = randomizeFunction();
+      }, 500);
   });
+
+  stopButton.addEventListener('click', function(){
+      if (interval){
+          clearInterval(interval);
+          interval = null;
+      }
+  });
+
   function randomizeFunction() {
       return myList[Math.floor(Math.random() * myList.length)];
   }
